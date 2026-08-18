@@ -1,0 +1,8 @@
+{
+  "name": "NAFNet-SR (ours, step 4000 EMA)",
+  "pred_dir": "results/preds_model_val",
+  "n": 200,
+  "psnr": 27.5150226688385,
+  "ssim": 0.7430149273574352,
+  "lpips": 0.2676095183752477
+}

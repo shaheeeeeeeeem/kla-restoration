@@ -49,8 +49,9 @@ def git_hash():
         root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         h = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=root,
                                     stderr=subprocess.DEVNULL).decode().strip()
-        dirty = subprocess.check_output(["git", "status", "--porcelain"], cwd=root,
-                                        stderr=subprocess.DEVNULL).decode().strip()
+        dirty = subprocess.check_output(
+            ["git", "status", "--porcelain", "--untracked-files=no"], cwd=root,
+            stderr=subprocess.DEVNULL).decode().strip()
         return h + ("-dirty" if dirty else "")
     except Exception:
         return "unknown"

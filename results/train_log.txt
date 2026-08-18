@@ -1,0 +1,112 @@
+device   : NVIDIA GeForce RTX 4050 Laptop GPU | 6.44 GB | sm_89 | torch 2.12.0+cu126 | cuda 12.6
+git      : caf4c07-dirty   seed: 1337   tag: final
+model    : nafnet_sr  4.02 M params  stride 8
+training : 15000 iters, batch 64, crop 64->128, lr 0.0002
+  step      1/15000  loss 0.08252  charb 0.05164  msssim 0.20587  lr 4.00e-07  0.01 it/s  eta 18045.3 min
+  step    100/15000  loss 0.06992  charb 0.04624  msssim 0.15786  lr 4.00e-05  0.95 it/s  eta 260.4 min
+  step    200/15000  loss 0.06231  charb 0.04008  msssim 0.14821  lr 8.00e-05  1.44 it/s  eta 171.1 min
+  step    300/15000  loss 0.06230  charb 0.04181  msssim 0.13663  lr 1.20e-04  1.75 it/s  eta 140.3 min
+  step    400/15000  loss 0.05269  charb 0.03418  msssim 0.12339  lr 1.60e-04  1.97 it/s  eta 123.8 min
+  step    500/15000  loss 0.04896  charb 0.03556  msssim 0.08934  lr 2.00e-04  2.11 it/s  eta 114.5 min
+  step    600/15000  loss 0.04672  charb 0.03340  msssim 0.08882  lr 2.00e-04  2.22 it/s  eta 108.3 min
+  step    700/15000  loss 0.05209  charb 0.03795  msssim 0.09426  lr 2.00e-04  2.29 it/s  eta 103.9 min
+  step    800/15000  loss 0.04055  charb 0.02956  msssim 0.07327  lr 2.00e-04  2.36 it/s  eta 100.4 min
+  step    900/15000  loss 0.04229  charb 0.03073  msssim 0.07702  lr 2.00e-04  2.40 it/s  eta 97.8 min
+  step   1000/15000  loss 0.03893  charb 0.02900  msssim 0.06615  lr 1.99e-04  2.44 it/s  eta 95.5 min
+  VAL step 1000: PSNR 24.5440  SSIM 0.5819
+  saved best.pt (PSNR 24.5440)
+  step   1100/15000  loss 0.03835  charb 0.02814  msssim 0.06804  lr 1.99e-04  2.36 it/s  eta 98.3 min
+  step   1200/15000  loss 0.04597  charb 0.03376  msssim 0.08139  lr 1.99e-04  2.39 it/s  eta 96.2 min
+  step   1300/15000  loss 0.04449  charb 0.03287  msssim 0.07749  lr 1.99e-04  2.42 it/s  eta 94.4 min
+  step   1400/15000  loss 0.04071  charb 0.03123  msssim 0.06319  lr 1.98e-04  2.44 it/s  eta 92.7 min
+  step   1500/15000  loss 0.04057  charb 0.03033  msssim 0.06824  lr 1.98e-04  2.46 it/s  eta 91.4 min
+  step   1600/15000  loss 0.04822  charb 0.03432  msssim 0.09265  lr 1.97e-04  2.47 it/s  eta 90.3 min
+  step   1700/15000  loss 0.03704  charb 0.02726  msssim 0.06514  lr 1.97e-04  2.49 it/s  eta 89.0 min
+  step   1800/15000  loss 0.04105  charb 0.03088  msssim 0.06786  lr 1.96e-04  2.50 it/s  eta 87.8 min
+  step   1900/15000  loss 0.03633  charb 0.02767  msssim 0.05775  lr 1.95e-04  2.52 it/s  eta 86.8 min
+  step   2000/15000  loss 0.03990  charb 0.03080  msssim 0.06067  lr 1.95e-04  2.52 it/s  eta 85.8 min
+  VAL step 2000: PSNR 26.2598  SSIM 0.6630
+  saved best.pt (PSNR 26.2598)
+  step   2100/15000  loss 0.03730  charb 0.02834  msssim 0.05974  lr 1.94e-04  2.47 it/s  eta 87.1 min
+  step   2200/15000  loss 0.03515  charb 0.02683  msssim 0.05548  lr 1.93e-04  2.48 it/s  eta 86.1 min
+  step   2300/15000  loss 0.04011  charb 0.03119  msssim 0.05950  lr 1.93e-04  2.49 it/s  eta 85.0 min
+  step   2400/15000  loss 0.03748  charb 0.02929  msssim 0.05463  lr 1.92e-04  2.49 it/s  eta 84.2 min
+  step   2500/15000  loss 0.03636  charb 0.02898  msssim 0.04918  lr 1.91e-04  2.50 it/s  eta 83.2 min
+  step   2600/15000  loss 0.03359  charb 0.02663  msssim 0.04641  lr 1.90e-04  2.51 it/s  eta 82.2 min
+  step   2700/15000  loss 0.03714  charb 0.03043  msssim 0.04477  lr 1.89e-04  2.52 it/s  eta 81.5 min
+  step   2800/15000  loss 0.03447  charb 0.02690  msssim 0.05046  lr 1.88e-04  2.52 it/s  eta 80.7 min
+  step   2900/15000  loss 0.03277  charb 0.02604  msssim 0.04483  lr 1.87e-04  2.53 it/s  eta 79.8 min
+  step   3000/15000  loss 0.03781  charb 0.03029  msssim 0.05009  lr 1.86e-04  2.54 it/s  eta 78.8 min
+  VAL step 3000: PSNR 27.3359  SSIM 0.7299
+  saved best.pt (PSNR 27.3359)
+  step   3100/15000  loss 0.03065  charb 0.02450  msssim 0.04101  lr 1.85e-04  2.52 it/s  eta 78.8 min
+  step   3200/15000  loss 0.03402  charb 0.02731  msssim 0.04474  lr 1.83e-04  2.53 it/s  eta 77.8 min
+  step   3300/15000  loss 0.04780  charb 0.04026  msssim 0.05030  lr 1.82e-04  2.54 it/s  eta 76.9 min
+  step   3400/15000  loss 0.03266  charb 0.02577  msssim 0.04596  lr 1.81e-04  2.54 it/s  eta 76.0 min
+  step   3500/15000  loss 0.03637  charb 0.03023  msssim 0.04092  lr 1.80e-04  2.55 it/s  eta 75.1 min
+  step   3600/15000  loss 0.03752  charb 0.03073  msssim 0.04523  lr 1.78e-04  2.56 it/s  eta 74.1 min
+  step   3700/15000  loss 0.03433  charb 0.02797  msssim 0.04245  lr 1.77e-04  2.57 it/s  eta 73.3 min
+  step   3800/15000  loss 0.03676  charb 0.03031  msssim 0.04299  lr 1.76e-04  2.58 it/s  eta 72.4 min
+  step   3900/15000  loss 0.03807  charb 0.03119  msssim 0.04583  lr 1.74e-04  2.59 it/s  eta 71.6 min
+  step   4000/15000  loss 0.03377  charb 0.02803  msssim 0.03828  lr 1.73e-04  2.59 it/s  eta 70.7 min
+  VAL step 4000: PSNR 27.5150  SSIM 0.7430
+  saved best.pt (PSNR 27.5150)
+  step   4100/15000  loss 0.03274  charb 0.02767  msssim 0.03377  lr 1.71e-04  2.57 it/s  eta 70.6 min
+  step   4200/15000  loss 0.03229  charb 0.02663  msssim 0.03773  lr 1.70e-04  2.58 it/s  eta 69.7 min
+  step   4300/15000  loss 0.03818  charb 0.03248  msssim 0.03796  lr 1.68e-04  2.59 it/s  eta 68.9 min
+  step   4400/15000  loss 0.02846  charb 0.02347  msssim 0.03329  lr 1.67e-04  2.59 it/s  eta 68.1 min
+  step   4500/15000  loss 0.03038  charb 0.02524  msssim 0.03424  lr 1.65e-04  2.60 it/s  eta 67.3 min
+  step   4600/15000  loss 0.03875  charb 0.03160  msssim 0.04771  lr 1.63e-04  2.61 it/s  eta 66.5 min
+  step   4700/15000  loss 0.03479  charb 0.02905  msssim 0.03827  lr 1.62e-04  2.61 it/s  eta 65.8 min
+  step   4800/15000  loss 0.02776  charb 0.02254  msssim 0.03481  lr 1.60e-04  2.61 it/s  eta 65.0 min
+  step   4900/15000  loss 0.02592  charb 0.02098  msssim 0.03296  lr 1.58e-04  2.62 it/s  eta 64.2 min
+  step   5000/15000  loss 0.03366  charb 0.02746  msssim 0.04131  lr 1.56e-04  2.63 it/s  eta 63.5 min
+  VAL step 5000: PSNR 27.3137  SSIM 0.7370
+  step   5100/15000  loss 0.03286  charb 0.02729  msssim 0.03712  lr 1.55e-04  2.61 it/s  eta 63.2 min
+  step   5200/15000  loss 0.02835  charb 0.02296  msssim 0.03588  lr 1.53e-04  2.62 it/s  eta 62.4 min
+  step   5300/15000  loss 0.03309  charb 0.02709  msssim 0.04000  lr 1.51e-04  2.62 it/s  eta 61.6 min
+  step   5400/15000  loss 0.02995  charb 0.02514  msssim 0.03201  lr 1.49e-04  2.63 it/s  eta 60.9 min
+  step   5500/15000  loss 0.03309  charb 0.02750  msssim 0.03725  lr 1.47e-04  2.63 it/s  eta 60.2 min
+  step   5600/15000  loss 0.03473  charb 0.02939  msssim 0.03559  lr 1.45e-04  2.64 it/s  eta 59.4 min
+  step   5700/15000  loss 0.03314  charb 0.02744  msssim 0.03799  lr 1.43e-04  2.64 it/s  eta 58.7 min
+  step   5800/15000  loss 0.03180  charb 0.02668  msssim 0.03413  lr 1.41e-04  2.64 it/s  eta 58.1 min
+  step   5900/15000  loss 0.03349  charb 0.02792  msssim 0.03711  lr 1.39e-04  2.64 it/s  eta 57.4 min
+  step   6000/15000  loss 0.03012  charb 0.02549  msssim 0.03081  lr 1.37e-04  2.64 it/s  eta 56.8 min
+  VAL step 6000: PSNR 27.0902  SSIM 0.7284
+  step   6100/15000  loss 0.03016  charb 0.02518  msssim 0.03320  lr 1.35e-04  2.62 it/s  eta 56.6 min
+  step   6200/15000  loss 0.02902  charb 0.02448  msssim 0.03025  lr 1.33e-04  2.62 it/s  eta 56.0 min
+  step   6300/15000  loss 0.02877  charb 0.02450  msssim 0.02843  lr 1.31e-04  2.62 it/s  eta 55.3 min
+  step   6400/15000  loss 0.03124  charb 0.02662  msssim 0.03079  lr 1.29e-04  2.62 it/s  eta 54.7 min
+  step   6500/15000  loss 0.03401  charb 0.02856  msssim 0.03629  lr 1.27e-04  2.62 it/s  eta 54.0 min
+  step   6600/15000  loss 0.03097  charb 0.02611  msssim 0.03238  lr 1.25e-04  2.62 it/s  eta 53.4 min
+  step   6700/15000  loss 0.02899  charb 0.02414  msssim 0.03231  lr 1.23e-04  2.62 it/s  eta 52.8 min
+  step   6800/15000  loss 0.03715  charb 0.03215  msssim 0.03332  lr 1.21e-04  2.62 it/s  eta 52.1 min
+  step   6900/15000  loss 0.02840  charb 0.02390  msssim 0.02998  lr 1.19e-04  2.62 it/s  eta 51.5 min
+  step   7000/15000  loss 0.02743  charb 0.02346  msssim 0.02645  lr 1.17e-04  2.62 it/s  eta 50.9 min
+  VAL step 7000: PSNR 26.9022  SSIM 0.7206
+  step   7100/15000  loss 0.03022  charb 0.02490  msssim 0.03548  lr 1.14e-04  2.61 it/s  eta 50.5 min
+  step   7200/15000  loss 0.03210  charb 0.02683  msssim 0.03509  lr 1.12e-04  2.61 it/s  eta 49.9 min
+  step   7300/15000  loss 0.02875  charb 0.02380  msssim 0.03303  lr 1.10e-04  2.61 it/s  eta 49.2 min
+  step   7400/15000  loss 0.03263  charb 0.02814  msssim 0.02991  lr 1.08e-04  2.61 it/s  eta 48.5 min
+  step   7500/15000  loss 0.03532  charb 0.02994  msssim 0.03587  lr 1.06e-04  2.61 it/s  eta 47.9 min
+  step   7600/15000  loss 0.02739  charb 0.02304  msssim 0.02898  lr 1.04e-04  2.61 it/s  eta 47.3 min
+  step   7700/15000  loss 0.03536  charb 0.03025  msssim 0.03409  lr 1.02e-04  2.61 it/s  eta 46.6 min
+  step   7800/15000  loss 0.03418  charb 0.02906  msssim 0.03409  lr 9.94e-05  2.61 it/s  eta 45.9 min
+  step   7900/15000  loss 0.02440  charb 0.02065  msssim 0.02502  lr 9.73e-05  2.61 it/s  eta 45.3 min
+  step   8000/15000  loss 0.03170  charb 0.02721  msssim 0.02994  lr 9.51e-05  2.61 it/s  eta 44.7 min
+  VAL step 8000: PSNR 26.7345  SSIM 0.7137
+  step   8100/15000  loss 0.03232  charb 0.02770  msssim 0.03084  lr 9.30e-05  2.60 it/s  eta 44.2 min
+  step   8200/15000  loss 0.02805  charb 0.02357  msssim 0.02987  lr 9.08e-05  2.61 it/s  eta 43.5 min
+  step   8300/15000  loss 0.03035  charb 0.02567  msssim 0.03120  lr 8.87e-05  2.61 it/s  eta 42.8 min
+  step   8400/15000  loss 0.03249  charb 0.02782  msssim 0.03111  lr 8.66e-05  2.62 it/s  eta 42.1 min
+  step   8500/15000  loss 0.02810  charb 0.02419  msssim 0.02607  lr 8.44e-05  2.62 it/s  eta 41.4 min
+  step   8600/15000  loss 0.02879  charb 0.02397  msssim 0.03212  lr 8.23e-05  2.62 it/s  eta 40.7 min
+  step   8700/15000  loss 0.02636  charb 0.02246  msssim 0.02604  lr 8.02e-05  2.62 it/s  eta 40.0 min
+  step   8800/15000  loss 0.02996  charb 0.02525  msssim 0.03141  lr 7.81e-05  2.63 it/s  eta 39.3 min
+  step   8900/15000  loss 0.02596  charb 0.02213  msssim 0.02551  lr 7.60e-05  2.63 it/s  eta 38.7 min
+  step   9000/15000  loss 0.02780  charb 0.02303  msssim 0.03179  lr 7.39e-05  2.63 it/s  eta 38.0 min
+  VAL step 9000: PSNR 26.5777  SSIM 0.7073
+  step   9100/15000  loss 0.02871  charb 0.02423  msssim 0.02987  lr 7.18e-05  2.62 it/s  eta 37.5 min
+  step   9200/15000  loss 0.02460  charb 0.02097  msssim 0.02421  lr 6.98e-05  2.62 it/s  eta 36.9 min
+  step   9300/15000  loss 0.02688  charb 0.02276  msssim 0.02747  lr 6.77e-05  2.62 it/s  eta 36.2 min
+  step   9400/15000  loss 0.02681  charb 0.02274  msssim 0.02718  lr 6.57e-05  2.63 it/s  eta 35.5 min
