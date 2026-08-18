@@ -187,6 +187,22 @@ should be read as relative, not as a prediction of evaluation-hardware throughpu
 
 ---
 
+## Clean-room verification
+
+The submission was verified end to end from a fresh clone, not from the development
+tree:
+
+1. `git clone` of the public repo into an empty directory
+2. fresh `venv`, `pip install -r requirements.txt`
+3. the README inference command run verbatim
+
+Result: **400/400 outputs bit-identical** to the development run, correct filenames,
+`(256,256)` float32, all values within `[0,1]`. **No manual fix of any kind was
+required.** The command was also run with an unrelated working directory to confirm
+that weights resolve relative to `inference.py` rather than the CWD.
+
+---
+
 ## Limitations — stated, not hidden
 
 **The run was stopped early, on purpose.** The approved budget was 15,000
