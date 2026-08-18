@@ -1,0 +1,8 @@
+{
+  "name": "bicubic x2 (baseline)",
+  "pred_dir": "results/preds_bicubic_val",
+  "n": 200,
+  "psnr": 22.73000524997711,
+  "ssim": 0.5215007139369845,
+  "lpips": 0.43945386439561845
+}

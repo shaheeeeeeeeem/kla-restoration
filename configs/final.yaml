@@ -1,0 +1,53 @@
+seed: 1337
+scale: 2
+
+data:
+  train_root: "C:/Users/mdsha/Downloads/train/train"
+  val_count: 200
+  lr_crop: 64
+  num_workers: 4
+  pin_memory: true
+  persistent_workers: true
+
+# Fixed dataset-level affine applied to the RAW, UNCLIPPED NoisyLR input.
+# mean is the measured pixelwise mean of train NoisyLR (see results/dataset_facts.md).
+# std is deliberately 1.0: mean-shift only, matching the EDSR/RCAN DIV2K convention
+# so pretrained filters see inputs at the scale they were trained on.
+# The network never sees clipped data; clipping happens only at save time.
+norm:
+  mean: 0.4335
+  std: 1.0
+
+model:
+  name: nafnet_sr
+  width: 32
+  enc_blocks: [2, 2, 4]
+  middle_blocks: 6
+  dec_blocks: [2, 2, 2]
+  global_residual: true
+
+loss:
+  charbonnier_weight: 1.0
+  charbonnier_eps: 1.0e-3
+  msssim_weight: 0.15
+
+train:
+  batch_size: 64
+  iters: 15000
+  lr: 2.0e-4
+  weight_decay: 0.0
+  betas: [0.9, 0.9]
+  warmup_iters: 500
+  min_lr: 1.0e-6
+  grad_clip: 1.0
+  amp_dtype: bf16
+  channels_last: true
+  ema_decay: 0.999
+  val_every: 1000
+  ckpt_every: 500
+  log_every: 100
+
+paths:
+  ckpt_dir: "weights"
+  log_file: "results/train_log.txt"
+  experiments_csv: "results/experiments.csv"
