@@ -41,3 +41,20 @@ def lr_at(step, base_lr, warmup, total, min_lr):
         return base_lr * (step + 1) / warmup
     p = (step - warmup) / max(1, total - warmup)
     return min_lr + 0.5 * (base_lr - min_lr) * (1 + math.cos(math.pi * min(p, 1.0)))
+
+
+def forward_self_ensemble(model, lr_raw, cfg):
+    """x8 geometric self-ensemble: average the model over the 8 flip/rotation
+    symmetries, mapping each result back before averaging. Optional and OFF by
+    default -- see inference.py --self_ensemble."""
+    outs = []
+    for k in range(4):
+        for flip in (False, True):
+            xt = torch.rot90(lr_raw, k, dims=(-2, -1))
+            if flip:
+                xt = torch.flip(xt, dims=(-1,))
+            y = forward_pair(model, xt.contiguous(), cfg).float()
+            if flip:
+                y = torch.flip(y, dims=(-1,))
+            outs.append(torch.rot90(y, -k, dims=(-2, -1)))
+    return torch.stack(outs, 0).mean(0)

@@ -69,6 +69,35 @@ without being constructed to.
 This is a *proxy*. It partitions in-distribution content by character; it does not
 sample genuinely unseen domains, so it bounds only the variation we can observe.
 
+## Self-ensemble — measured, then declined
+
+×8 flip/rotate self-ensemble is implemented behind `--self_ensemble` and **defaults
+OFF**. Full write-up: `results/self_ensemble.md`; figure:
+`results/figures/self_ensemble_tradeoff.png`; reproduce with
+`python scripts/self_ensemble_tradeoff.py`.
+
+| Mode | PSNR ↑ | SSIM ↑ | LPIPS ↓ | Throughput (compute only) |
+|---|---|---|---|---|
+| **single pass (default)** | 27.5150 | 0.7430 | 0.2676 | **204.4 img/s** |
+| ×8 self-ensemble | **27.8205** | **0.7519** | **0.2555** | 25.1 img/s |
+| difference | **+0.3055 dB** | +0.0089 | −0.0121 | **8.13× slower** |
+
+The gain is real and consistent across all three metrics. It costs 8.13× the
+compute — matching the theoretical ×8 exactly.
+
+Quality and throughput are scored on separate axes with undisclosed weights, so we
+take the configuration that is strong on both rather than trading a large, certain
+throughput loss for a small, uncertain quality gain. Flipping the flag needs no
+retraining and no new checkpoint.
+
+A caveat on measurement: timing the whole command over only 400 images makes the
+self-ensemble look cheaper (2.48×) because ~6 s of process and CUDA startup
+dominates a ~2.3 s workload. The **8.13× compute-only figure is the one that
+generalises**, and we report that.
+
+**Adding the flag did not change default behaviour** — re-running the default
+command afterwards reproduced the clean-room outputs 400/400 bit-identical.
+
 ## Training budget — and why the run was stopped early
 
 The approved run was 15,000 iterations. It was **stopped at ~9,400** because

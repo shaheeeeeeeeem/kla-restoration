@@ -175,6 +175,12 @@ for smooth / edge-dominated / **texture-heavy**. We report **24.40 dB as our hon
 OOD expectation** rather than the 27.52 dB average, since half the hidden test is
 out-of-distribution content. The model beats bicubic in every group.
 
+**Self-ensemble.** ×8 flip/rotate averaging is available via `--self_ensemble` and
+**defaults OFF**: it buys +0.3055 dB / +0.0089 SSIM / −0.0121 LPIPS for **8.13× the
+compute**. With KLA's quality-vs-throughput weighting undisclosed, we default to the
+configuration that is strong on both axes. See
+[`results/self_ensemble.md`](results/self_ensemble.md).
+
 Runtime breakdown: [`results/runtime_report.md`](results/runtime_report.md).
 Figures, including a failure case: `results/figures/`.
 

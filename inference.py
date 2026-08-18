@@ -11,7 +11,7 @@ import torch
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
-from src.engine.common import forward_pair
+from src.engine.common import forward_pair, forward_self_ensemble
 from src.models.nafnet_sr import build_model
 from src.utils.imageio import load_npy, save_npy
 from src.utils.misc import Config, load_config
@@ -52,6 +52,8 @@ def main():
     p.add_argument("--batch_size", type=int, default=16)
     p.add_argument("--device", default="auto")
     p.add_argument("--fp32", action="store_true")
+    p.add_argument("--self_ensemble", action="store_true",
+                   help="x8 flip/rotate averaging: ~+0.1 dB for ~8x the compute. OFF by default.")
     a = p.parse_args()
 
     if a.device == "auto":
@@ -83,6 +85,7 @@ def main():
     print(f"input   : {a.input_dir}  ({grouped.n} arrays)")
     print(f"output  : {a.output_dir}")
     print(f"weights : {weights}  (step {ck.get('step', '?')}, git {ck.get('git', '?')})")
+    print(f"mode    : {'x8 self-ensemble' if a.self_ensemble else 'single pass (default)'}")
     print(f"device  : {device}   shapes: {dict((k, len(v)) for k, v in grouped.groups.items())}")
 
     use_amp = (device == "cuda") and not a.fp32
@@ -99,7 +102,10 @@ def main():
                 x = x.to(memory_format=torch.channels_last)
 
                 with torch.autocast("cuda", dtype=torch.bfloat16, enabled=use_amp):
-                    out = forward_pair(model, x, cfg)
+                    if a.self_ensemble:
+                        out = forward_self_ensemble(model, x, cfg)
+                    else:
+                        out = forward_pair(model, x, cfg)
                 out = out.float().clamp_(0, 1).cpu().numpy()
 
                 for f, arr in zip(chunk, out):
