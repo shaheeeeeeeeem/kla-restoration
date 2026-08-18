@@ -43,6 +43,32 @@ clipped to [0,1] at save time. It does no denoising at all, which is why SSIM an
 LPIPS are poor even though PSNR is not catastrophic — the noise survives the
 upsample intact. It is the honest floor for this task.
 
+## OOD proxy evaluation
+
+Half the hidden test set is out-of-distribution *content*, and the released test
+inputs have no ground truth, so no direct measurement is possible. The held-out
+validation split was re-partitioned by content character — no new data, no new
+disclosures. Method and thresholds: `results/ood_analysis.md`; figure:
+`results/figures/ood_groups.png`; reproduce with `python scripts/ood_partition.py`.
+
+| Group | n | PSNR bicubic → ours | SSIM bicubic → ours | LPIPS bicubic → ours |
+|---|---|---|---|---|
+| smooth / low-frequency | 67 | 23.60 → **31.36** | 0.482 → **0.842** | 0.470 → **0.205** |
+| structured / edge-dominated | 67 | 23.25 → **26.73** | 0.583 → **0.781** | 0.382 → **0.229** |
+| **texture-heavy (weakest)** | 66 | 21.32 → **24.40** | 0.499 → **0.603** | 0.467 → **0.370** |
+| *all 200, for reference* | 200 | 22.73 → 27.52 | 0.522 → 0.743 | 0.440 → 0.268 |
+
+**Honest OOD estimate: 24.40 dB, not the headline 27.52 dB** — a 3.11 dB gap. If the
+hidden set skews toward dense texture, that is the number to expect. The model beats
+bicubic in *every* group, so the ranking never inverts; only the margin changes.
+
+Independent corroboration: all three lowest-PSNR validation images fall in the
+texture-heavy group, so the content partition and the failure-case analysis agree
+without being constructed to.
+
+This is a *proxy*. It partitions in-distribution content by character; it does not
+sample genuinely unseen domains, so it bounds only the variation we can observe.
+
 ## Training budget — and why the run was stopped early
 
 The approved run was 15,000 iterations. It was **stopped at ~9,400** because

@@ -169,6 +169,12 @@ PSNR and SSIM are implemented in `src/metrics/image_metrics.py` and agree with
 `skimage.metrics` to **1.6e-7** (SSIM) and **9e-7** (PSNR). LPIPS uses the AlexNet
 variant (evaluation only — see [`EXTERNAL_RESOURCES.md`](EXTERNAL_RESOURCES.md)).
 
+**OOD proxy.** Partitioning the held-out split by content character (see
+[`results/ood_analysis.md`](results/ood_analysis.md)) gives 31.36 / 26.73 / **24.40 dB**
+for smooth / edge-dominated / **texture-heavy**. We report **24.40 dB as our honest
+OOD expectation** rather than the 27.52 dB average, since half the hidden test is
+out-of-distribution content. The model beats bicubic in every group.
+
 Runtime breakdown: [`results/runtime_report.md`](results/runtime_report.md).
 Figures, including a failure case: `results/figures/`.
 
