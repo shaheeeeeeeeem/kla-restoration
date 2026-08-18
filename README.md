@@ -240,6 +240,47 @@ Other limitations:
 
 ---
 
+## Resolution paths — 256×256 verified
+
+All 400 *released* test inputs are 128×128, so the 256×256 input path (→ 512×512
+output) was never exercised by the shipped data. KLA states that shortlisted
+submissions are re-run on hidden data with GT around 256×256 **or 512×512**, which
+would mean 256×256 inputs. That path is now explicitly verified:
+
+```bash
+python scripts/verify_resolution_paths.py
+```
+
+No 512×512 ground truth exists anywhere in the released data (all 3,200 training GT
+arrays are 256×256), so the 256×256 inputs are produced by **bicubic-upsampling the
+released 128×128 test inputs**. This is a *shape and robustness* probe, not a quality
+measurement — there is no ground truth to score it against.
+
+| Input | Output | Filenames | dtype | Range | Border/interior residual |
+|---|---|---|---|---|---|
+| 256×256 | **512×512** | match | float32 | 0.000000 … 1.000000 | 1.218 |
+| 250×250 | 500×500 | match | float32 | 0.000000 … 1.000000 | 1.215 |
+| 129×129 | 258×258 | match | float32 | 0.000000 … 1.000000 | 1.335 |
+| mixed dir (128 + 250 + 256) | all correct | match | float32 | 0.000000 … 1.000000 | — |
+
+**On padding artifacts.** The network stride is 8, so 128, 256 and 512 are all exact
+multiples and *never trigger the reflect-padding path at all*. The padding path was
+therefore exercised deliberately with 250×250 and 129×129. No seam appears: the
+border-to-interior residual ratio for the padded 250×250 case (1.215) is
+indistinguishable from the unpadded 256×256 case (1.218), which shows the mild edge
+elevation is inherent bicubic edge behaviour rather than anything introduced by
+padding.
+
+**Peak VRAM (inference, batch 1):** 128² → 0.067 GB, 256² → 0.124 GB,
+512² → 0.350 GB; 256² at batch 16 → 1.256 GB. Even the largest case uses a small
+fraction of the 6.44 GB card, so larger evaluation images are not a memory risk.
+
+**Mixed-shape batching** groups by shape and processed a directory containing
+128×128, 250×250 and 256×256 together without error, emitting the correct ×2 output
+for each.
+
+---
+
 ## Assumptions
 
 1. Output format was **derived** from the test inputs — no README or evaluator
