@@ -10,19 +10,35 @@ used in the submitted model.**
 
 ---
 
-## Quick start
+## ► The script to run: `inference.py`
+
+**`inference.py` is the evaluation script.** It is the single file to run to measure
+both restoration quality and inference time on the H100. Nothing else needs to be
+executed, edited, or configured.
 
 ```bash
 pip install -r requirements.txt
-```
-
-```bash
 python inference.py --input_dir /path/to/degraded --output_dir /path/to/restored
 ```
 
-That is the complete inference contract — no config edits, no notebooks, no path
-edits, no other required arguments. Weights are resolved **relative to
-`inference.py`**, not the working directory, so the command works from anywhere.
+That is the complete contract — no config edits, no notebooks, no path edits, no
+other required arguments. Weights are resolved **relative to `inference.py`**, not
+the working directory, so the command works from any directory. It auto-detects
+CUDA, falls back to CPU with a warning, creates `output_dir` if missing, and is
+deterministic (two runs produce bit-identical files).
+
+### Requirements — two files, use the first
+
+| File | Use |
+|---|---|
+| **`requirements.txt`** | **Install this.** Cross-platform, exact training versions, Windows-only packages removed and `+cu126` local suffixes dropped so it resolves on Linux. |
+| `requirements-freeze-windows.txt` | The literal 241-package `pip freeze` from the Windows training environment, for provenance. **Do not install this on Linux** — it contains `pywinpty`, which has no Linux wheel. |
+
+### Restored test outputs
+
+The model's actual restored images for the released test set are committed at
+[`restored_test_outputs/`](restored_test_outputs/) — 400 `.npy` files, `float32`,
+`(256, 256)`, clipped to `[0,1]`, filenames identical to the inputs.
 
 ---
 

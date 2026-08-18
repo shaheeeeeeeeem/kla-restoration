@@ -1,14 +1,25 @@
-# Generated from the working environment (Windows 11, Python 3.14, CUDA 12.6).
-# torch/torchvision are the CUDA 12.6 builds; install them from the PyTorch index:
+# Installable, cross-platform requirements. Versions are the exact ones from the
+# training environment (see requirements-freeze-windows.txt for the literal
+# `pip freeze`), with two deliberate differences so this file installs cleanly on a
+# Linux evaluation machine:
+#
+#   1. Windows-only packages are excluded (the freeze contains pywinpty==3.0.3,
+#      which has no Linux wheel and hard-fails `pip install -r`).
+#   2. The `+cu126` local version suffixes are dropped from torch/torchvision.
+#      `torch==2.12.0+cu126` does not resolve from plain PyPI; `torch==2.12.0` does,
+#      and pip selects the right CUDA build for the platform.
+#
+# For the exact CUDA 12.6 builds we trained and benchmarked on:
 #   pip install torch==2.12.0 torchvision==0.27.0 --index-url https://download.pytorch.org/whl/cu126
-# CPU-only machines can drop the index-url and use the default CPU wheels.
+
+# --- required by inference.py (the script KLA runs) ---
 torch==2.12.0
-torchvision==0.27.0
 numpy==2.4.4
-scipy==1.17.1
-scikit-image==0.26.0
-lpips==0.1.4
 PyYAML==6.0.3
+
+# --- required by the evaluation and figure scripts ---
+torchvision==0.27.0
+lpips==0.1.4
+scikit-image==0.26.0
+scipy==1.17.1
 matplotlib==3.10.8
-pandas==3.0.3
-tqdm==4.67.3
