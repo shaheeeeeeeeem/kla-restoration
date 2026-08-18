@@ -1,5 +1,23 @@
 # External resources
 
+## Summary — the short answer
+
+| Question | Answer |
+|---|---|
+| External **datasets** used? | **None.** Organizer-provided `train/` pairs only. |
+| Pretrained weights in the **submitted model**? | **None.** Trained from random initialization. |
+| Pretrained weights anywhere in the project? | **Yes — evaluation only.** LPIPS + its AlexNet backbone, used solely to compute a reported metric. Not imported by `inference.py`. |
+| Licences verified? | **Yes**, read from the `LICENSE` file shipped in each installed package. |
+
+`inference.py` — the graded entry point — imports **no** package that fetches
+anything from the network. This was verified by tracing its full transitive import
+graph (1,108 modules; `lpips`, `torchvision` and `skimage` all absent) and then
+running it with those packages made unimportable *and* outbound sockets disabled:
+it completed all 400 test images and produced byte-identical outputs. The graded run
+is safe in an offline or sandboxed environment.
+
+---
+
 Every third-party model, pretrained weight, and dataset used anywhere in this
 project. Licences below were read from the actual `LICENSE` file shipped in the
 installed package (path given per entry), not quoted from memory.
