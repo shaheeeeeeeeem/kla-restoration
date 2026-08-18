@@ -10,6 +10,9 @@ data/
 
 *.npy
 !results/figures/*.npy
+# REQUIRED DELIVERABLE: the actual restored images our model produced on the
+# released test set. Committed deliberately -- do not re-ignore.
+!restored_test_outputs/*.npy
 
 weights/*.pt
 weights/*.pth
