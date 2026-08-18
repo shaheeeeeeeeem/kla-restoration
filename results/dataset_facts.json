@@ -1,0 +1,59 @@
+{
+  "train_gt": {
+    "name": "TRAIN / GT",
+    "path": "C:\\Users\\mdsha/Downloads/train/train\\GT",
+    "count": 3200,
+    "bytes": 839270400,
+    "inspected": 3200,
+    "dtypes": {
+      "float32": 3200
+    },
+    "shapes": {
+      "(256, 256)": 3200
+    },
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.433528441361254,
+    "std": 0.2726460604341463,
+    "frac_outside_01": 0.0,
+    "frac_negative": 0.0
+  },
+  "train_lr": {
+    "name": "TRAIN / NoisyLR",
+    "path": "C:\\Users\\mdsha/Downloads/train/train\\NoisyLR",
+    "count": 3200,
+    "bytes": 210124800,
+    "inspected": 3200,
+    "dtypes": {
+      "float32": 3200
+    },
+    "shapes": {
+      "(128, 128)": 3200
+    },
+    "min": -0.2785630524158478,
+    "max": 2.1580049991607666,
+    "mean": 0.4335362882139575,
+    "std": 0.2847866113127236,
+    "frac_outside_01": 0.033933467864990234,
+    "frac_negative": 0.002848949432373048
+  },
+  "test_lr": {
+    "name": "TEST / NoisyLR (hidden, no GT)",
+    "path": "C:\\Users\\mdsha/Downloads/Test_NoisyLR (1)\\NoisyLR",
+    "count": 400,
+    "bytes": 26265600,
+    "inspected": 400,
+    "dtypes": {
+      "float32": 400
+    },
+    "shapes": {
+      "(128, 128)": 400
+    },
+    "min": -0.2248806655406952,
+    "max": 2.1580159664154053,
+    "mean": 0.44274202802813145,
+    "std": 0.28426904901765365,
+    "frac_outside_01": 0.037402648925781254,
+    "frac_negative": 0.006601257324218751
+  }
+}
