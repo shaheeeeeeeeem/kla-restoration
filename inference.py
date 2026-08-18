@@ -69,7 +69,11 @@ def main():
 
     torch.backends.cuda.matmul.allow_tf32 = True
     torch.backends.cudnn.allow_tf32 = True
-    torch.backends.cudnn.benchmark = True
+    # cudnn.benchmark picks algorithms by timing, which makes outputs vary by ~2e-3
+    # between runs. Determinism is part of the contract and costs only ~2% throughput.
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
+    torch.manual_seed(0)
 
     model, cfg, ck = load_checkpoint(weights, device)
     model = model.to(memory_format=torch.channels_last)

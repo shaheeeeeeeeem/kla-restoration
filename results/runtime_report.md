@@ -19,10 +19,10 @@
 
 ## End-to-end
 
-- **total wall clock: 2.336 s** for 400 images
-- **throughput: 171.27 images/sec**
-- per-image: 5.84 ms
-- spread over 5 runs: min 2.293 s, max 2.351 s
+- **total wall clock: 2.321 s** for 400 images
+- **throughput: 172.35 images/sec**
+- per-image: 5.80 ms
+- spread over 5 runs: min 2.304 s, max 2.341 s
 
 ## Per-stage breakdown
 
@@ -30,10 +30,10 @@ Stage times are summed across batches within one pass. They overlap with threade
 
 | Stage | Median (s) | % of wall clock |
 |---|---|---|
-| read | 0.264 | 11.3% |
+| read | 0.265 | 11.4% |
 | preprocess | 0.004 | 0.2% |
-| h2d | 0.016 | 0.7% |
-| forward | 1.981 | 84.8% |
+| h2d | 0.017 | 0.7% |
+| forward | 1.977 | 85.2% |
 | d2h | 0.030 | 1.3% |
-| write_submit | 0.019 | 0.8% |
-| write_drain | 0.011 | 0.5% |
+| write_submit | 0.017 | 0.7% |
+| write_drain | 0.014 | 0.6% |

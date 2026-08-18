@@ -101,6 +101,11 @@ def main():
     a = p.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    # mirror inference.py exactly, so the reported throughput is the one users get
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
     totals, n, cfg, ck = bench(a.input_dir, a.out_dir, a.weights, a.batch_size,
                                device, a.repeats, a.warmup)
 

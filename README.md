@@ -156,7 +156,14 @@ unweighted.**
 
 Submitted checkpoint: `weights/best.pt` — step 4000, EMA weights, seed 1337, git `caf4c07`.
 End-to-end inference throughput including disk read and file writing:
-**171.27 images/sec** on the hardware below (400 test images in 2.34 s).
+**172.35 images/sec** on the hardware below (400 test images in 2.32 s, warm cache,
+median of 5 after 2 warmup passes). A single cold-start `inference.py` invocation over
+the same 400 images takes ~5.1 s wall clock including process start and model load.
+
+Inference is **deterministic**: `cudnn.benchmark` is disabled and
+`cudnn.deterministic` enabled, verified by two consecutive runs producing
+**400/400 bit-identical** outputs. This costs ~2% throughput and was taken
+deliberately, since determinism is part of the output contract.
 
 PSNR and SSIM are implemented in `src/metrics/image_metrics.py` and agree with
 `skimage.metrics` to **1.6e-7** (SSIM) and **9e-7** (PSNR). LPIPS uses the AlexNet
